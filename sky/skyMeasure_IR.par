@@ -1,0 +1,8 @@
+skyname	=	PG1302-102_f110w_sky_mskd.fits
+mskname	=	PG1302-102_f110w_sky_msk.fits
+trimR	=	0
+trimC	=	0
+nbin	=	60
+svRtnm	=	./figs/PG1302_IR_yl
+NBIN	=	100
+NBINBnd	=	30

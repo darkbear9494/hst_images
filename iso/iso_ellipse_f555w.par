@@ -1,0 +1,5 @@
+srcName = PG1302-102_f555w
+imgFile = PG1302-102_f555w_sub.fits
+mskFile = PG1302-102_f555w_iso_msk.fits
+xcntr = 481
+ycntr = 481

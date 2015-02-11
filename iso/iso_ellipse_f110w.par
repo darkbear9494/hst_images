@@ -1,0 +1,5 @@
+srcName = PG1302-102_f110w
+imgFile = PG1302-102_f110w_sub.fits
+mskFile = PG1302-102_f110w_iso_msk.fits
+xcntr = 501
+ycntr = 501

@@ -1,0 +1,7 @@
+inPtDat = PG1302-102_f110w_dat.txt
+srcName = PG1302-102_f110w
+skyVal = 0.359
+skyRms = 0.402
+pxlScl = 0.06
+rdrng1 = 0.8
+rdrng2 = 1.0
