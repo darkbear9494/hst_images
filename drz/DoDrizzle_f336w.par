@@ -1,0 +1,12 @@
+#inPtNm = @drzlist_01_f336w
+#svRtNm = SDSSJ1108+0659_F336W
+
+#inPtNm = @drzlist_02_f336w
+#svRtNm = SDSSJ1131-0204_F336W
+
+#inPtNm = @drzlist_03_f336w
+#svRtNm = SDSSJ1146+5110_F336W
+
+inPtNm = @drzlist_04_f336w
+svRtNm = SDSSJ1332+0606_F336W
+cfgname = F336W_mdz_row2.cfg

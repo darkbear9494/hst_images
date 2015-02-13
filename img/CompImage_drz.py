@@ -1,6 +1,6 @@
 # This file is to compare two images.
 
-import sys
+import os
 import time
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,16 +8,31 @@ import pyfits as pft
 import pyraf
 from matplotlib.colors import LogNorm
 
-pyraf.os.system('ds9 &')
-time.sleep(5)
+#os.system('ds9 &')
+#time.sleep(5)
 
-dir1= '/Users/jinyi/iraf/PG1302-102/hst_old/'
-dir2= '/Users/jinyi/iraf/PG1302-102/hst_dwnld/'
-#obj = sys.argv[1]
-obj1 = 'iby844010_old.fits'
-obj2 = 'iby844010_new.fits'
-path1 = dir1 + obj1
-path2 = dir2 + obj2
+#obj1 = 'SDSSJ1108+0659_F336W_drz.fits'
+#obj2 = 'ibln01020_drz.fits'
+#obj1 = 'SDSSJ1108+0659_F105W_drz.fits'
+#obj2 = 'ibln01010_drz.fits'
+
+obj1 = 'SDSSJ1131-0204_F336W_drz.fits'
+obj2 = 'ibln02020_drz.fits'
+#obj1 = 'SDSSJ1131-0204_F105W_drz.fits'
+#obj2 = 'ibln02010_drz.fits'
+
+#obj1 = 'SDSSJ1146+5110_F336W_drz.fits'
+#obj2 = 'ibln03020_drz.fits'
+#obj1 = 'SDSSJ1146+5110_F105W_drz.fits'
+#obj2 = 'ibln03010_drz.fits'
+
+#obj1 = 'SDSSJ1332+0606_F336W_drz.fits'
+#obj2 = 'ibln04020_drz.fits'
+#obj1 = 'SDSSJ1332+0606_F105W_drz.fits'
+#obj2 = 'ibln04010_drz.fits'
+
+path1 = obj1
+path2 = obj2
 print 'path1:', path1
 print 'path2:', path2
 
@@ -53,7 +68,11 @@ fitsNew.extend([ihdu3])
 fitsNew.extend([ihdu4])
 
 fitsNew.writeto('diff_drz.fits', clobber='true')
+os.system('ds9 -zscale -sinh -cmap heat -multiframe diff_drz.fits -frame lock image &')
+
+'''
 pyraf.iraf.module.display('diff_drz.fits[1]', frame=1)
 pyraf.iraf.module.display('diff_drz.fits[2]', frame=2)
 pyraf.iraf.module.display('diff_drz.fits[3]', frame=3)
 pyraf.iraf.module.display('diff_drz.fits[4]', frame=4)
+'''
