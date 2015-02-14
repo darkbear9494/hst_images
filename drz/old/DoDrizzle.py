@@ -1,6 +1,6 @@
 import sys
 from drizzlepac import astrodrizzle
-from pyraf import iraf
+import pyraf
 
 def ReadParList(file_name):
     f = open(file_name)
@@ -19,5 +19,5 @@ inPtNm = inPar['inPtNm']
 svRtNm = inPar['svRtNm']
 cfgname = inPar['cfgname']
 
-#iraf.unlearn('astrodrizzle')
+pyraf.iraf.module.unlearn('astrodrizzle')
 astrodrizzle.AstroDrizzle(input=inPtNm, output=svRtNm, configobj=cfgname)

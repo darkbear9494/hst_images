@@ -5,9 +5,6 @@
 #Code by Shangguan Jinyi
 #
 #The functions included are:
-# plotImg(): shows input image in a simple way.
-# saveFigs(): saves input image into a FITS file.
-# loadFits(): load a FITS file and return the image data as an array.
 # sky_Mask_Region(): obtains the mask of input image and the masked image within a certain region.
 # sky_Unmask_Region(): obtains the mask of the whole image except the region specified by the user.
 # add_Mask_Rectangular(): add some rectangular masks on an image.
@@ -18,48 +15,6 @@ import sep
 import pyfits as pft
 import numpy as np
 import matplotlib.pyplot as plt
-
-#Func_bng:
-#-------------------------------------#
-#	by SGJY, Feb. 6, 2015         #
-#-------------------------------------#
-def plotImg(img):
-  img_scaled = np.log10(img)
-  imgplot = plt.imshow(img_scaled)
-  imgplot.set_cmap('hot')
-  plt.colorbar()
-  plt.show()
-#Func_end
-
-#Func_bng:
-#-------------------------------------#
-#	by SGJY, Feb. 6, 2015         #
-#-------------------------------------#
-def saveFits(img, fitsName, hdu=None, hdulist=None):
-  if hdu == None:
-    Hdu = pft.PrimaryHDU(img)
-  else:
-    Hdu = hdu
-  if hdulist == None:
-    HduList = pft.HDUList([Hdu])
-  else:
-    HduList = hdulist
-  HduList.writeto(fitsName, clobber=1)
-  print 'Successful save image to ' + fitsName
-#Func_end
-
-#Func_bng:
-#-------------------------------------#
-#	by SGJY, Feb. 7, 2015         #
-#-------------------------------------#
-def loadFits(fitsName, Xtnsn=0):
-  if(fitsName == ''):
-    return None
-  imgFITS= pft.open(fitsName)
-  image = imgFITS[Xtnsn].data
-  print 'Fits info: \n', imgFITS.info
-  return image
-#Func_end
 
 #Func_bng:
 #-------------------------------------#
@@ -294,10 +249,10 @@ def add_Mask_Circle(inPtImg, inPtMsk=None, cirList=None):
     rad = int(np.ceil(mskCir[2])) #Obtain the ceiling of the number.
     print cX, cY, rad
     for loopX in range(cX-rad, cX+rad+1):
-      if((loopX<0) or (loopX>img_X)): #Ignore the pixels outside the boundary.
+      if((loopX<0) or (loopX>=img_X)): #Ignore the pixels outside the boundary.
         continue
       for loopY in range(cY-rad, cY+rad+1):
-        if((loopY<0) or (loopY>img_Y)): #Ignore the pixels outside the boundary.
+        if((loopY<0) or (loopY>=img_Y)): #Ignore the pixels outside the boundary.
           continue
         dX = loopX - cX
         dY = loopY - cY

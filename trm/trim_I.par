@@ -1,0 +1,7 @@
+inPtImg = PG1302-102_I_drz.fits
+xtnsion = 1
+outPtNm = PG1302-102_I_drz_trm.fits
+xBng = 15
+xEnd = 1155
+yBng = 15
+yEnd = 1030

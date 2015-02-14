@@ -1,0 +1,7 @@
+inPtImg = PG1302-102_B_80s_rpl.fits
+xtnsion = 1
+outPtNm = PG1302-102_B_80s_rpl_trm.fits
+xBng = 10
+xEnd = 1015
+yBng = 65
+yEnd = 1015

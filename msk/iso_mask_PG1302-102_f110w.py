@@ -8,19 +8,21 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import myFunc_Msk as mfm
+import myFunc_Img as mfi
 
-inPtImg = 'PG1302-102_f110w_sub.fits'
-inPtReg = 'PG1302-102_f110w.reg'
-outPtNm = 'PG1302-102_f110w_iso'
+inPtImg = 'PG1302-102_I_drz_trm.fits'
+xtnsion = 1
+inPtReg = 'PG1302-102_I.reg'
+outPtNm = 'PG1302-102_I_iso'
 
-image = mfm.loadFits(inPtImg, 0) #Load image from FITS file
+image, hdr_prm, hdr_img = mfi.loadFits(inPtImg, xtnsion) #Load image from FITS file
 cirlist = mfm.load_DS9_Reg(inPtReg)
 
-img_msk, img_mskd, img_msk_rgn, img_mskd_rgn = mfm.sky_Unmask_Region(image, uMskRgn=(400, 610, 390, 610), mskScal=5, seThrsh=3, minArea=5)
+img_msk, img_mskd, img_msk_rgn, img_mskd_rgn = mfm.sky_Unmask_Region(image, uMskRgn=(435, 760, 390, 700), mskScal=8, seThrsh=5, minArea=5)
 
 img_msk, img_mskd = mfm.add_Mask_Circle(image, inPtMsk=img_msk, cirList=cirlist)
 
 outPtNm_msk = outPtNm+'_msk.fits'
 outPtNm_mskd = outPtNm+'_mskd.fits'
-mfm.saveFits(img_msk, outPtNm_msk)
-mfm.saveFits(img_mskd, outPtNm_mskd)
+mfi.saveFits(img_msk, outPtNm_msk, hdr_prm=hdr_prm, hdr_img=hdr_img)
+mfi.saveFits(img_mskd, outPtNm_mskd, hdr_prm=hdr_prm, hdr_img=hdr_img)
